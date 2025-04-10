@@ -102,3 +102,68 @@ textarea {
     border-radius: 8px;
     border: 1px solid #ccc;
     resize: vertical;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.what-if-form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 1rem;
+}
+
+.what-if-form button {
+    margin-top: 1rem;
+    padding: 0.7rem 2rem;
+    border: none;
+    background: #4d56ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.what-if-form button:hover {
+    background: #3742fa;
+}
+
+.result-box {
+    margin-top: 3rem;
+    text-align: left;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.user-question {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.ai-response {
+    white-space: pre-line;
+    font-family: "Segoe UI Emoji", sans-serif;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+

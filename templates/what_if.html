@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}What-If Explorer | INNER ORBIT{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="page-title">🌌 What-If Scenario Explorer</h2>
+    <p class="description">Enter any "what if..." thought or fear. Let AI guide you toward clarity and control.</p>
+
+    <form action="/what-if" method="POST" class="what-if-form">
+        <textarea name="question" placeholder="e.g. What if I fail this project?" required></textarea>
+        <button type="submit">Explore Outcome</button>
+    </form>
+
+    {% if user_input %}
+    <div class="result-box">
+        <h3>Your Question:</h3>
+        <p class="user-question">"{{ user_input }}"</p>
+
+        <h3>AI’s Reframed Insight:</h3>
+        <!-- Fixes line break issue -->
+        <p class="ai-response">{{ ai_response.replace('\n', '<br>') | safe }}</p>
+
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
