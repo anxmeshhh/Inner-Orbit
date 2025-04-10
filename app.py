@@ -75,9 +75,88 @@ def quotes():
 def journal():
     return render_template("journal.html")
 
-@app.route("/self-check")
+# Sample tech job list with dropout reasons
+TECH_JOBS = {
+    "Software Developer": ["Impostor syndrome", "Burnout", "Lack of mentorship"],
+    "Data Scientist": ["Fear of statistics", "Coding anxiety", "Lack of real-world datasets"],
+    "AI Engineer": ["Imposter syndrome", "Overwhelming theory", "Too much math"],
+    "Frontend Developer": ["Design pressure", "Performance stress", "Browser compatibility issues"],
+    "Backend Developer": ["Scalability anxiety", "Server management stress", "Database confusion"],
+    "DevOps Engineer": ["Tool overload", "Complex pipelines", "24/7 uptime stress"],
+    "Cybersecurity Analyst": ["Paranoia fatigue", "High responsibility pressure", "Constantly changing threats"],
+    "UI/UX Designer": ["Creative burnout", "Stakeholder criticism", "Inconsistent feedback"],
+    "Cloud Engineer": ["Vendor lock-in fears", "Infrastructure complexity", "High learning curve"],
+    "Game Developer": ["Crunch culture", "Creative blocks", "Performance tuning challenges"],
+    "Mobile App Developer": ["Device fragmentation", "UI constraints", "Fast-changing frameworks"],
+    "Full Stack Developer": ["Too many roles", "Context switching", "Undefined job scope"],
+    "ML Engineer": ["Model deployment stress", "Experiment overload", "Evaluation difficulties"]
+}
+
+
+# Sample questions (mix of tech + general)
+QUESTIONS = [
+    "Do you enjoy solving logical problems?",
+    "Are you comfortable learning new programming languages?",
+    "Do you often doubt your skills despite good results?",
+    "Are you familiar with version control tools like Git?",
+    "Do you seek feedback and act on it?",
+    "Can you explain tech concepts to non-tech people?",
+    "Do you get nervous while working on team tech projects?",
+    "Have you built any personal or open-source projects?",
+    "Do you enjoy debugging and fixing code issues?",
+    "Are you comfortable working under tight deadlines?",
+    "Do you stay updated with the latest tech trends?",
+    "Do you prefer hands-on learning over theoretical reading?",
+    "Can you manage time effectively when juggling multiple tasks?",
+    "Do you feel confident asking questions when stuck?",
+    "Have you ever contributed to group projects or hackathons?",
+    "Do you understand how APIs work and how to use them?",
+    "Are you willing to revisit and improve your old code?",
+    "Do you research a concept thoroughly before implementing it?",
+    "Can you explain your project decisions in interviews or reviews?",
+    "Do you experience stress while learning complex technical topics?"
+]
+
+
+@app.route("/self-check", methods=["GET", "POST"])
 def self_check():
-    return render_template("self_check.html")
+    if request.method == "POST":
+        selected_job = request.form.get("job")
+        answers = [request.form.get(f"q{i}") for i in range(len(QUESTIONS))]
+
+        prompt = f"""
+        You are a helpful career advisor. Analyze the following user's yes/no answers to assess their readiness for the tech job: {selected_job}.
+        Give:
+        1. A percentage score (0-100%) showing how aligned they are with this career.
+        2. A short personalized summary.
+        3. 2-3 concrete tips to improve.
+
+        Questions:
+        {QUESTIONS}
+        Answers:
+        {answers}
+        """
+
+        try:
+            response = model.generate_content(prompt)
+            ai_feedback = response.text
+        except Exception as e:
+            ai_feedback = f"Error communicating with AI: {e}"
+
+        return render_template("self_check.html", 
+                               questions=list(enumerate(QUESTIONS)), 
+                               jobs=TECH_JOBS.keys(), 
+                               selected_job=selected_job,
+                               ai_feedback=ai_feedback,
+                               submitted=True)
+
+    shuffled_questions = QUESTIONS[:]
+    random.shuffle(shuffled_questions)
+    return render_template("self_check.html", 
+                           questions=list(enumerate(shuffled_questions)), 
+                           jobs=TECH_JOBS.keys(), 
+                           submitted=False)
+
 
 @app.route("/what-if", methods=["GET", "POST"])
 def what_if():
