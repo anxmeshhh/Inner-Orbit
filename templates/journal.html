@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="journal-container">
+    <h2>📝 Journal for Reflection</h2>
+    <p class="journal-intro">
+        Writing helps us slow down, reflect, and realize our true potential. Use these prompts to guide your thoughts. This stays between you and you.
+    </p>
+
+    <div class="journal-prompts">
+        <h4>Today's Reflection Prompts:</h4>
+        <ul>
+            <li>What is one thing I accomplished this week that I’m proud of?</li>
+            <li>What skills or strengths helped me achieve that?</li>
+            <li>When was the last time someone appreciated my work? What did they say?</li>
+            <li>What doubts have I had about myself recently?</li>
+            <li>What proof do I have that I’m capable and improving?</li>
+            <li>What would I tell a friend who was feeling the same way I am?</li>
+            <li>What goals have I set and achieved in the past year?</li>
+            <li>How do I define success for myself — not for others?</li>
+            <li>What’s one kind thing I can do for myself this week?</li>
+            <li>What am I learning through this journey — even when it’s hard?</li>
+        </ul>
+    </div>
+
+    <form onsubmit="return false;">
+        <label for="journal-entry">Your Journal Entry:</label><br>
+        <textarea id="journal-entry" name="journal-entry" rows="12" cols="80" placeholder="Start writing here... (This won’t be saved)"></textarea><br><br>
+        <button type="button" onclick="clearJournal()">🗑️ Clear Entry</button>
+    </form>
+</div>
+
+<script>
+    function clearJournal() {
+        if (confirm("Are you sure you want to clear your entry?")) {
+            document.getElementById("journal-entry").value = "";
+        }
+    }
+</script>
+
+<style>
+.journal-container {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: auto;
+}
+
+.journal-intro {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.journal-prompts ul {
+    list-style-type: square;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+</style>
+{% endblock %}

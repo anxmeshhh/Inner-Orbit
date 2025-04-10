@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="quotes-container">
+    <h2>💬 Inspiring Quotes from Real People</h2>
+    <p class="quote-intro">You're not alone. Even the most successful people have felt like imposters. Let their words guide you.</p>
+
+    <div id="quote-box" class="quote-box">
+        <p id="quote-text">Loading quote...</p>
+        <p id="quote-author" class="quote-author"></p>
+    </div>
+</div>
+
+<script>
+    const quotes = [
+        {
+            text: "I have written eleven books, but each time I think, 'Uh oh, they’re going to find out now.' I’ve run a game on everybody.",
+            author: "— Maya Angelou"
+        },
+        {
+            text: "I still have a little imposter syndrome... It doesn’t go away, that feeling that you shouldn’t take me that seriously.",
+            author: "— Michelle Obama"
+        },
+        {
+            text: "The beauty of the impostor syndrome is you vacillate between extreme egomania and a complete feeling of: ‘I’m a fraud! Oh God, they’re on to me!’",
+            author: "— Tina Fey"
+        },
+        {
+            text: "Sometimes I wake up in the morning before going off to a shoot, and I think, 'I can’t do this. I’m a fraud.'",
+            author: "— Kate Winslet"
+        },
+        {
+            text: "I have spent my years since Princeton, while at law school, in my jobs and in my community endeavoring to validate that I am worthy of all I have received.",
+            author: "— Sonia Sotomayor"
+        },
+        {
+            text: "There are still days when I wake up feeling like a fraud, not sure I should be where I am.",
+            author: "— Sheryl Sandberg"
+        },
+        {
+            text: "I think everyone in some way feels like a fraud. Some people just hide it better than others.",
+            author: "— Ryan Reynolds"
+        },
+        {
+            text: "I have a constant fear that I’m a fraud and that I’ll be found out.",
+            author: "— Emma Watson"
+        },
+        {
+            text: "People often ask, 'What’s the secret to success?' There is no secret. And I still feel like I don’t belong here.",
+            author: "— Neil Gaiman"
+        },
+        {
+            text: "Imposter syndrome is real. But you have to remind yourself that you are here because you deserve to be.",
+            author: "— Lupita Nyong’o"
+        },
+        {
+            text: "I am not a writer. I’ve been fooling myself and other people.",
+            author: "— John Steinbeck"
+        },
+        {
+            text: "You think, ‘Why would anyone want to hear me talk?’ You think, ‘I’m just a girl from Liverpool.’",
+            author: "— Jodie Comer"
+        },
+        {
+            text: "I get imposter syndrome every day. But I keep showing up.",
+            author: "— Simone Biles"
+        },
+        {
+            text: "It’s okay to feel like an imposter — it means you’re pushing yourself.",
+            author: "— Adam Grant"
+        },
+        {
+            text: "I always feel like something of an imposter. I don’t think I deserve all this success.",
+            author: "— Jamie Lee Curtis"
+        }
+    ];
+
+    let currentIndex = 0;
+
+    function displayQuote(index) {
+        const quoteBox = document.getElementById('quote-box');
+        const quoteText = document.getElementById('quote-text');
+        const quoteAuthor = document.getElementById('quote-author');
+
+        quoteText.innerText = `"${quotes[index].text}"`;
+        quoteAuthor.innerText = quotes[index].author;
+    }
+
+    function rotateQuotes() {
+        displayQuote(currentIndex);
+        currentIndex = (currentIndex + 1) % quotes.length;
+    }
+
+    // Initialize and auto-rotate every 7 seconds
+    window.onload = () => {
+        rotateQuotes();
+        setInterval(rotateQuotes, 7000);
+    };
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,104 @@
+.affirmations-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.affirmation-card {
+    background: #f0f8ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.tips-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    text-align: left;
+}
+
+.tips-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tips-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tips-list li {
+    background-color: #fff0f5;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #ff69b4;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+
+.quote-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+}
+
+#quote-text {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #333;
+}
+
+.quote-author {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+.journal-container {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: auto;
+}
+
+.journal-intro {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.journal-prompts ul {
+    list-style-type: square;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;

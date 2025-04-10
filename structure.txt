@@ -1,0 +1,18 @@
+imposter-helper/
+├── static/
+│   └── css/
+│       └── styles.css            # All custom styles
+│
+├── templates/
+│   ├── base.html                 # Shared layout (navbar, footer)
+│   ├── index.html                # Home page
+│   ├── affirmations.html        # Rotating affirmations
+│   ├── tips.html                 # Coping strategies
+│   ├── quotes.html               # Real quotes from successful people
+│   ├── journal.html              # Self-reflection prompts (no data stored)
+│   ├── self_check.html           # Yes/No game with AI-based summary
+│   └── not_found.html            # 404 custom page
+│
+├── app.py                        # Main Flask app
+├── README.md                     # Project overview & instructions
+└── requirements.txt              # (Optional) For dependencies like Flask

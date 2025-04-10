@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="affirmations-container">
+    <h2>Daily Affirmation 🌟</h2>
+    <div class="affirmation-card">
+        <p>{{ affirmation }}</p>
+    </div>
+    <button onclick="window.location.reload()">Show Another</button>
+</div>
+{% endblock %}

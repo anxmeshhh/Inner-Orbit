@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imposter Syndrome Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Imposter Syndrome Helper</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('affirmations') }}">Affirmations</a>
+            <a href="{{ url_for('tips') }}">Tips</a>
+            <a href="{{ url_for('quotes') }}">Quotes</a>
+            <a href="{{ url_for('journal') }}">Journal</a>
+            <a href="{{ url_for('self_check') }}">Self Check</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Imposter Helper</p>
+    </footer>
+</body>
+</html>
